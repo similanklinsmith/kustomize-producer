@@ -1,0 +1,33 @@
+# don't forget to update config.model
+environment: sit
+
+app:
+  name: producer
+
+server:
+  port: 8081
+  timeout: 15
+  
+log:
+  environment: production
+  level: info
+  format: json
+
+postgres:
+  db-name: deep-db
+  host: 34.126.178.29
+  port: 5432
+  pool-size: 30
+
+kafka:
+  address:
+    - kafka.poc.internal:9092
+  topic: 
+    - deep-user-topic
+  consume-group: deep-user-consumer-group
+
+user-list-key: DEEP_USER_LIST
+
+
+
+

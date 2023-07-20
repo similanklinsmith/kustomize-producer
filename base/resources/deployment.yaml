@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deep-user-producer
+  labels:
+    app.kubernetes.io/name: deep-user-producer
+    app.kubernetes.io/instance: deep-user-producer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: deep-user-producer
+      app.kubernetes.io/instance: deep-user-producer
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: deep-user-producer
+        app.kubernetes.io/instance: deep-user-producer
+    spec:
+      containers:
+        - name: deep-user-producer
+          image: asia.gcr.io/poc-innovation-iot/deep-user-producer:TAG
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - secretRef:
+                name: deep-user-producer-secret-env
+          volumeMounts:
+              - mountPath: /config/config.yaml
+                name: deep-user-producer-configmap-file
+                subPath: config.yaml
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+            timeoutSeconds: 10
+            initialDelaySeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            timeoutSeconds: 10
+            initialDelaySeconds: 10
+          resources:
+            limits:
+              cpu: 64m
+              memory: 64Mi
+            requests:
+              cpu: 32m
+              memory: 32Mi
+      volumes:
+        - name: deep-user-producer-secret-file
+          secret:
+            secretName: deep-user-producer-secret-file
+        - name: deep-user-producer-configmap-file
+          configMap:
+            name: deep-user-producer-configmap-file
