@@ -5,7 +5,7 @@ app:
   name: producer
 
 server:
-  port: 8081
+  port: 8080
   timeout: 15
   
 log:
