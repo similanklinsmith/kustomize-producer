@@ -27,6 +27,10 @@ kafka:
 
 user-list-key: DEEP_USER_LIST
 
+redis:
+  address: 172.28.241.3:6379
+  database: 1
+
 
 
 
