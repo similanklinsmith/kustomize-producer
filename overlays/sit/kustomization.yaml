@@ -6,7 +6,7 @@ resources:
 
 images:
 - name: asia.gcr.io/poc-innovation-iot/deep-user-producer
-  newTag: 103eda26
+  newTag: 6d87207c
 
 
 configMapGenerator:
