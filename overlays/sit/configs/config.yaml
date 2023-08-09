@@ -6,7 +6,7 @@ app:
 
 server:
   port: 8080
-  timeout: 15
+  timeout: 300
   
 log:
   environment: production
