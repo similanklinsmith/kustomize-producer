@@ -46,11 +46,11 @@ spec:
             initialDelaySeconds: 10
           resources:
             limits:
-              cpu: 64m
-              memory: 64Mi
+              cpu: 200m
+              memory: 512Mi
             requests:
-              cpu: 32m
-              memory: 32Mi
+              cpu: 200m
+              memory: 512Mi
       volumes:
         - name: deep-user-producer-secret-file
           secret:
