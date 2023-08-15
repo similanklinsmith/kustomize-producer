@@ -47,10 +47,10 @@ spec:
           resources:
             limits:
               cpu: 200m
-              memory: 512Mi
+              memory: 128Mi
             requests:
               cpu: 200m
-              memory: 512Mi
+              memory: 64Mi
       volumes:
         - name: deep-user-producer-secret-file
           secret:
